@@ -10,13 +10,11 @@ function App() {
 
   useEffect(() => {
     const convert = async (abortController) => {
-
-      if(fromCur === toCur) {
-        setConvertedAmount(amount.toFixed(2))
+      if (fromCur === toCur) {
+        setConvertedAmount(amount.toFixed(2));
         setLoading(false);
-        return
+        return;
       }
-
 
       setError(null);
       setConvertedAmount("");
@@ -55,6 +53,10 @@ function App() {
     };
   }, [amount, fromCur, toCur]);
 
+  useEffect(() => {
+    document.title = "currency converter";
+  }, []);
+
   return (
     <div className="container">
       <h1>Currency Converter</h1>
@@ -67,8 +69,7 @@ function App() {
       <select
         disabled={loading}
         value={fromCur}
-        onChange={(e) => setFromCur(e.target.value)}
-      >
+        onChange={(e) => setFromCur(e.target.value)}>
         <option value="EUR">EUR</option>
         <option value="USD">USD</option>
         <option value="CAD">CAD</option>
@@ -78,8 +79,7 @@ function App() {
       <select
         disabled={loading}
         value={toCur}
-        onChange={(e) => setToCur(e.target.value)}
-      >
+        onChange={(e) => setToCur(e.target.value)}>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="CAD">CAD</option>
